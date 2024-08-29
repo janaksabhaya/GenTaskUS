@@ -1,0 +1,49 @@
+import React, { useState } from 'react'
+
+const InputDropdown = ({ label = 'menu', icon = '', dropdownItems }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleDropdown = () => setIsOpen(!isOpen);
+
+
+    const Items = [
+        { label: `Item 1`, href: '#' },
+        { label: `Item 2`, href: '#' },
+        { label: `Item 3`, href: '#' },
+    ];
+
+    return (
+        <div className="relative text-left">
+            <button
+                onClick={toggleDropdown}
+                className="flex items-center justify-between px-3 py-2 bg-white w-full rounded  text-[#6C757D] focus:outline-none"
+                type="button"
+            >
+                {icon}
+                <span className="ml-2 capitalize mr-1 text-[16px]">{label}</span>
+                <div>
+                    <i className="bi bi-caret-down-fill" style={{ fontSize: '10px' }}></i>
+                </div>
+            </button>
+
+            {isOpen && (
+                <div className="absolute mt-1 bg-white border border-gray-200 rounded shadow-lg z-50 w-full">
+                    <ul className="py-1 text-gray-700">
+                        {dropdownItems ? dropdownItems : Items?.map((item, index) => (
+                            <li key={index}>
+                                <a
+                                    href={item?.href}
+                                    className="block px-4 py-2 hover:bg-gray-100"
+                                >
+                                    {item?.label}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default InputDropdown

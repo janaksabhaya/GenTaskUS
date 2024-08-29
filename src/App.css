@@ -1,0 +1,14 @@
+
+
+  
+  /* Ensure styles are applied globally if needed */
+  .waveform [part="region-content"] {
+    padding: 1em 2em !important;
+    display: block !important;
+    margin-top: 1px !important;
+    font-size: 14px !important;
+    color: #000 !important;
+    background-color: #DEE2E6 !important;
+    border: 1px solid #54f802 !important;
+    border-radius: 4px !important;
+  }
