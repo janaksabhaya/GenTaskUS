@@ -180,13 +180,13 @@ const CallEvaluation = () => {
                 </div>
 
                 {/* score table */}
-                <div>
+                {/* <div>
                     <ScoreTables />
 
                 </div>
                 <div>
                     <WordCloudPhases />
-                </div>
+                </div> */}
 
             </div>
         </>
