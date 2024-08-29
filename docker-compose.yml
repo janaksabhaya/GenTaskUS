@@ -1,0 +1,19 @@
+version: "3.6"
+services:
+    image: task-ui-service:dev
+    container_name: task-ui-service-dev
+    build: .
+    ports:
+      - "3001:3000"
+    networks:
+      - llm-network
+    dns:
+      - 8.8.8.8
+    restart: "unless-stopped"
+    command: ["npm", "start"]
+# services:
+#   web:
+#     build: .
+#     ports:
+#       - "3000:80"
+    
