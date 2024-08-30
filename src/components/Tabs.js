@@ -122,7 +122,7 @@ const Tabs = () => {
                                         className={`transition-opacity duration-300 mb-7`}
                                     >
                                         <div className={`flex items-end`}>
-                                            <div className='h-5 w-5 rounded-full border border-[#DEE2E6] mr-2 flex justify-center items-center'><img src={SenderIcon} alt='receiver'/></div>
+                                            <div className='h-5 w-5 rounded-full border border-[#DEE2E6] mr-2 flex justify-center items-center'><img src={SenderIcon} alt='receiver' /></div>
 
                                             <div
                                                 className='rounded-lg p-3 min-w-[416px] w-full mr-[104px] text-[#212529] bg-[#ff00741a]'

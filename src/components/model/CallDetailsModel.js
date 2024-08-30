@@ -45,7 +45,7 @@ const CallDetailsModel = ({ isOpen, onClose }) => {
 
 
     return (
-        <div className="fixed flex justify-end top-0 right-0 z-[99999] h-screen overflow-y-auto transition-transform translate-x-0 backdrop-brightness-50 w-full dark:bg-gray-800 border-b" style={{ boxShadow: 'rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px' }}>
+        <div className="fixed flex justify-end top-0 right-0 z-[99999] h-screen overflow-hidden transition-transform translate-x-0 backdrop-brightness-50 w-full dark:bg-gray-800 border-b" style={{ boxShadow: 'rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px' }}>
          <div className='w-full h-full max-w-[368px] bg-white'>
          <div className='p-4'>
                 <h3 className="text-xl font-medium text-gray-900 dark:text-white">
@@ -62,7 +62,7 @@ const CallDetailsModel = ({ isOpen, onClose }) => {
                     <span className="sr-only">Close menu</span>
                 </button>
             </div>
-            <div className='border-t'>
+            <div className='border-t overflow-y-auto bg-white scrollbar-thin pb-3'>
                 {CallDetailsModelData?.map((section, index) => (
                     <div className='p-4' key={index}>
                         <h6 className='font-bold'>{section.title}</h6>

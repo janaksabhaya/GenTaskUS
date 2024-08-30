@@ -44,6 +44,7 @@ const CallDetails = () => {
         }
     ]);
 
+
     const [questionsResolution, setQuestionsResolution] = useState([
         {
             id: 1,
@@ -63,22 +64,37 @@ const CallDetails = () => {
         setQualityScore(!qualityScore)
     }
 
+
     const handleInputChange = (id, newScore) => {
-        setQuestions(questions.map(q =>
-            q.id === id ? { ...q, score: newScore } : q
-        ));
+        if (newScore.length <= 3 && newScore >= 0 && newScore <= 100 ) {
+            setQuestions(questions.map(q =>
+                q.id === id ? { ...q, score: newScore } : q
+            ));
+        }
     };
 
-    const handleInputChangeResolution = (id, newScore) => { // after change the state logic
-        setQuestions(questions.map(q =>
-            q.id === id ? { ...q, score: newScore } : q
-        ));
+    const handleInputChangeResolution = (id, newScore) => {
+        if (newScore.length <= 3 && newScore >= 0 && newScore <= 100) {
+            setQuestionsResolution(questionsResolution.map(q =>
+                q.id === id ? { ...q, score: newScore } : q
+            ));
+        }
     };
+
 
     const handleSubmit = () => {
         console.log('Submitted Scores:', questions);
         setQualityScore(false);
     };
+
+
+    const handleDiscard = () => {
+        setQuestions(questions);
+        setQuestionsResolution(questionsResolution);
+    };
+
+    console.log('questions', questions)
+    console.log('questionsResolution', questionsResolution)
 
     const handleBackClick = () => {
         navigate(-1);
@@ -163,7 +179,7 @@ const CallDetails = () => {
                                 <div className='flex justify-between items-center'>
                                     <h6 className='font-bold text-xl'>QUALITY SCORE</h6>
                                     <div className='flex items-center font-normal gap-3'>
-                                        {qualityScore ? <h6 className='text-[#0D6EFD] text-sm' onClick={() => { }}>DISCARD</h6> : ""}
+                                        {qualityScore ? <h6 className='text-[#0D6EFD] text-sm cursor-pointer' onClick={handleDiscard}>DISCARD</h6> : ""}
                                         <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={hundleQulityScrore}> {qualityScore ? 'SAVE' : 'CHANGE'}</button>
                                     </div>
                                 </div>
@@ -210,19 +226,19 @@ const CallDetails = () => {
                                     <h6 className='bg-[#212529] px-2 py-2 rounded text-white text-xs' >Weight: 60%</h6>
                                 </div>
                                 <div>
-                                    {questionsResolution?.map((question) => (
-                                        <div key={question.id} className='flex gap-5 mt-6 justify-between'>
+                                    {questionsResolution?.map((questionRes) => (
+                                        <div key={questionRes.id} className='flex gap-5 mt-6 justify-between'>
                                             <div>
-                                                <h6 className='text-base font-normal'>{question?.title}</h6>
-                                                <h6 className='bg-[#6C757D] px-2 py-2 rounded text-white text-xs w-fit mt-2' >Weight: {question.weight}%</h6>
+                                                <h6 className='text-base font-normal'>{questionRes?.title}</h6>
+                                                <h6 className='bg-[#6C757D] px-2 py-2 rounded text-white text-xs w-fit mt-2' >Weight: {questionRes.weight}%</h6>
                                             </div>
                                             <div className='relative '>
                                                 <input type='text'
                                                     className={`border border-[#CED4DA] w-[88px] px-3 py-[6px] rounded ${qualityScore ? '' : 'bg-[#E9ECEF]'}`}
-                                                    value={question.score}
+                                                    value={questionRes?.score}
                                                     placeholder='100'
                                                     disabled={!qualityScore}
-                                                    onChange={(e) => handleInputChangeResolution(question.id, e.target.value)} />
+                                                    onChange={(e) => handleInputChangeResolution(questionRes.id, e.target.value)} />
                                                 {qualityScore && <span className='absolute top-[6px] left-[60px] '><i className="bi bi-pencil-fill text-[#6C757D]"></i></span>}
                                             </div>
                                         </div>
