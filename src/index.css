@@ -28,9 +28,5 @@
 }
 
 .custom-table-height {
-  height: calc(80vh - -4px);
-}
-
-th {
-  height: 24px !important;
+  height: calc(80vh - -30px);
 }

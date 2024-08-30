@@ -18,7 +18,7 @@ const data = {
 };
 
 const ScoreTable = ({ title, scores }) => (
-  <div className="w-full bg-[#e3eaf1] p-4 rounded-lg shadow-md">
+  <div className="w-full p-4 rounded-lg shadow-md bg-white">
     <h2 className="text-lg font-semibold mb-4">{title}</h2>
     <table className="min-w-full bg-white">
       <thead>
@@ -48,7 +48,7 @@ const ScoreTable = ({ title, scores }) => (
 );
 
 const ScoreTables = () => (
-  <div className="flex flex-col md:flex-row gap-4">
+  <div className="flex flex-col md:flex-row gap-6">
     <ScoreTable title="Alpha's Top 5 Scores" scores={data.topScores} />
     <ScoreTable title="Alpha's Lowest 5 Scores" scores={data.lowestScores} />
   </div>

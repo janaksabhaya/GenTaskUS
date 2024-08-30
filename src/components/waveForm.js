@@ -14,7 +14,7 @@ const Waveform = ({ audioUrl, isPlaying }) => {
                 container: waveformRef?.current,
                 waveColor: '#FF0074',
                 progressColor: '#A44AFF',
-                cursorColor: '#1C64F2',
+                cursorColor: 'black',
                 barWidth: 4,
                 barGap: 2,
                 barHeight: 1,
@@ -82,7 +82,7 @@ const Waveform = ({ audioUrl, isPlaying }) => {
 
     return (
         <div className='relative'>
-            <div className="waveform-container absolute  rotate-90 p-4 top-[40px] -left-[54px]">
+            <div className="waveform-container absolute  rotate-90 p-4 top-[70px] -left-[54px]">
                 <div ref={waveformRef} className="waveform" />
             </div>
             

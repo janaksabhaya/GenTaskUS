@@ -2,11 +2,37 @@ import React from 'react'
 import SmileIcon from '../assets/images/face-smile.svg'
 import ExpressionlessIcon from '../assets/images/face-expressionless.svg'
 import ConfusedIcon from '../assets/images/face-confused.svg'
+import ClockIcon from '../assets/images/clock.svg'
 import ScoreTables from '../components/callEvulution/ScoreTables'
 import WordCloudUI from '../components/callEvulution/WordCloudPhases.js'
 import WordCloudPhases from '../components/callEvulution/WordCloudPhases.js'
 
 const CallEvaluation = () => {
+
+    const positiveWords = [
+        { text: 'Thank', value: 50 },
+        { text: 'patience', value: 30 },
+        { text: 'help', value: 25 },
+        { text: 'appreciate', value: 20 },
+        { text: 'understanding', value: 15 },
+        { text: 'choosing', value: 25 },
+        { text: 'value', value: 30 },
+        { text: 'us', value: 30 },
+        { text: 'business', value: 30 },
+      ];
+      
+      const negativeWords = [
+        { text: 'Unresolved', value: 50 },
+        { text: 'issue', value: 30 },
+        { text: 'Poor', value: 25 },
+        { text: 'service', value: 20 },
+        { text: 'Billing', value: 25 },
+        { text: 'Rude', value: 30 },
+        { text: 'errors', value: 30 },
+        { text: 'behavior', value: 30 },
+        { text: 'response', value: 30 },
+      ];
+
 
     const data = [
         {
@@ -46,42 +72,54 @@ const CallEvaluation = () => {
 
     return (
         <div className='mb-5'>
-            <div className='container mx-auto'>
-                <div className='my-8'>
-                    <div className='flex justify-center w-full gap-6'>
-                        <div className='border border-solid border-[#21252940] rounded w-full' style={{boxShadow:'0px 2px 4px 0px rgba(0, 0, 0, 0.08)'}}>
-                            <div className='flex justify-between items-center bg-[#e3eaf1] px-4 py-3'>
+            <div className='mx-[60px]'>
+                <div className='my-6'>
+                    <div className='flex justify-center w-full gap-6 '>
+                        <div className='border border-solid  rounded-lg w-full bg-white' style={{ boxShadow: '0px 2px 4px 0px rgba(0, 0, 0, 0.08)' }}>
+                            <div className='flex justify-between items-center bg-[#ECF1F6] rounded-t-lg px-4 py-3'>
                                 <div className='gap-3 flex'>
                                     <i className="bi bi-calendar"></i>
-                                    <span className='font-semibold'>As on 01-08-2024</span>
+                                    <span className='font-bold text-base'>As on 01-08-2024</span>
                                 </div>
                                 <div className='font-medium text-[#0D6EFD]'>
                                     Review
                                 </div>
                             </div>
-
                             <div className='flex'>
-                                <div className='flex flex-col items-center min-w-[250px] py-8 border-r'>
-                                    <i className="bi bi-headset text-[#FF0074] text-[48px]"></i>
-                                    <h6 className='text-[16px] font-medium'>Calls</h6>
-                                    <h6 className='text-[64px] font-light'>400</h6>
-                                </div>
-                                <div className='flex justify-between items-center py-8 w-full'>
-                                    <div className='flex flex-col items-center  border-r w-full'>
-                                        <i className="bi bi-check-all  text-[#FF0074] text-[48px]"></i>
-                                        <h6 className='text-[16px] font-medium'>AI Evaluated</h6>
-                                        <h6 className='text-[64px] font-light'>360</h6>
+                                {/* <div className='border-r w-full h-full'> */}
+                                    <div className='flex flex-col justify-center items-center py-[56px] border-r w-full'>
+                                        <i className="bi bi-headset text-[#FF0074] text-[48px]"></i>
+                                        <h6 className='text-[16px] font-medium'>Calls</h6>
+                                        <h6 className='text-[64px] font-light'>400</h6>
                                     </div>
-                                    <div className='flex flex-col items-center w-full'>
-                                        <i className="bi bi-clock-history  text-[#FF0074] text-[48px]"></i>
-                                        <h6 className='text-[16px] font-medium'>Pending Review</h6>
-                                        <h6 className='text-[64px] font-light'>40</h6>
+                                {/* </div> */}
+                                <div className='flex flex-col justify-center w-full py-5 px-6 gap-5'>
+                                    <div className='flex justify-between items-center'>
+                                        <div className='flex items-center gap-2'>
+                                            <i className="bi bi-check-all  text-[#198754] text-[40px]"></i>
+                                            <h6>AI Evaluated</h6>
+                                        </div>
+                                        <h6 className='text-2xl font-medium'>360</h6>
+                                    </div>
+                                    <div className='flex justify-between items-center'>
+                                        <div className='flex items-center gap-2'>
+                                            <img src={ClockIcon} alt='clock' />
+                                            <h6>Pending Review</h6>
+                                        </div>
+                                        <h6 className='text-2xl font-medium'>40</h6>
                                     </div>
                                 </div>
+            
                             </div>
                         </div>
 
-                        <div className='border border-[#21252940] rounded w-full' style={{boxShadow:'0px 2px 4px 0px rgba(0, 0, 0, 0.08)'}}>
+
+                        <div className='border rounded-lg w-full bg-white' style={{ boxShadow: '0px 2px 4px 0px rgba(0, 0, 0, 0.08)' }}>
+                            <div className='flex justify-between items-center bg-[#ECF1F6] rounded-t-lg px-4 py-3'>
+                                <div className='font-bold text-base'>
+                                    Score & Sentiment
+                                </div>
+                            </div>
                             <div className='flex'>
                                 <div className='flex flex-col items-center py-[56px] border-r w-full'>
                                     <i className="bi bi-headset  text-[#FF0074] text-[48px]"></i>
@@ -92,8 +130,8 @@ const CallEvaluation = () => {
                                         <span className='flex items-center ms-3 mb-3 text-[#6C757D]'><sup>/100</sup></span>
                                     </div>
                                 </div>
-                                <div className='flex flex-col w-full py-5 px-6 gap-5'>
-                                    <h6 className='text-[28px] font-medium'>Sentiments</h6>
+                                <div className='flex flex-col justify-center w-full py-5 px-6 gap-5'>
+                                    {/* <h6 className='text-[28px] font-medium'>Sentiments</h6> */}
                                     <div className='flex justify-between items-center'>
                                         <div className='flex items-center gap-2'>
                                             <img src={SmileIcon} alt='smile' />
@@ -120,12 +158,11 @@ const CallEvaluation = () => {
                         </div>
                     </div>
 
-                    <div className='flex justify-center w-full mt-6 gap-6'>
-
+                    <div className='flex justify-center w-full mt-6 gap-6 '>
                         {data?.map((item) => (
                             <div
                                 key={item.id}
-                                className='w-full border rounded border-[#21252940]'
+                                className='w-full border rounded-lg bg-white'
                                 style={{ boxShadow: '0px 2px 4px 0px rgba(0, 0, 0, 0.08)' }}
                             >
                                 <div className='p-5 flex items-center gap-4'>
@@ -183,8 +220,9 @@ const CallEvaluation = () => {
                     <ScoreTables />
 
                 </div>
-                <div>
-                    {/* <WordCloudPhases /> */}
+                <div className='flex gap-6'>
+                    <WordCloudPhases words={positiveWords} title={'Top 5 Phrases (Positive)'}/>
+                    <WordCloudPhases words={negativeWords} title={'Top 5 Phrases (Negative)'}/>
                 </div>
 
             </div>

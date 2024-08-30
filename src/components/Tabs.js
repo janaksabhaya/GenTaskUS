@@ -6,6 +6,7 @@ import Waveform from './waveForm';
 import SentimentChart from './SentimentChart';
 // import AudioUrl from '../assets/recoding/audio-song.mp3'
 import AudioUrl from '../assets/recoding/recordingTest.mp3'
+import SenderIcon from '../assets/images/sender.svg'
 
 
 const Tabs = () => {
@@ -63,7 +64,7 @@ const Tabs = () => {
     return (
         <div>
             <div className='relative'>
-                <ul className="flex flex-wrap text-sm font-medium text-center h-[48px] text-gray-500 border-b px-5 pt-3 border-gray-200  bg-[#e3eaf1] ">
+                <ul className="flex flex-wrap text-sm font-medium text-center h-[48px] text-gray-500 border-b px-5 pt-3 border-gray-200  bg-[#ECF1F6]">
                     <li className="me-2">
                         <button
                             className={`inline-block px-4 py-2 rounded-t-lg border-[#DEE2E6] ${activeTab === 'transcription' ? 'text-[#495057] bg-white ' : 'hover:text-gray-600 hover:bg-gray-50 text-[#0D6EFD]'}`}
@@ -118,10 +119,10 @@ const Tabs = () => {
                                 {messagesSentiment?.map((message, index) => (
                                     <div
                                         key={index}
-                                        className={`mb-4 transition-opacity duration-300`}
+                                        className={`transition-opacity duration-300 mb-7`}
                                     >
                                         <div className={`flex items-end`}>
-                                            <div className='h-5 w-5 rounded-full border border-[#DEE2E6] mr-2 flex justify-center items-center'><i className="bi bi-person"></i></div>
+                                            <div className='h-5 w-5 rounded-full border border-[#DEE2E6] mr-2 flex justify-center items-center'><img src={SenderIcon} alt='receiver'/></div>
 
                                             <div
                                                 className='rounded-lg p-3 min-w-[416px] w-full mr-[104px] text-[#212529] bg-[#ff00741a]'
@@ -136,7 +137,7 @@ const Tabs = () => {
                                                 return (
                                                     <>
                                                         <div>
-                                                            <h6 className={`text-xs  font-bold text-white px-2 py-1 w-fit rounded ${label?.type === 'title' ? 'bg-[#6C757D]' : 'bg-[#DC3545]'}`}> {index === 0 ? `ID: ${message.id} |` : ''}  {label?.text}</h6>
+                                                            <h6 className={`text-xs font-bold text-white px-2 py-1 w-fit rounded ${label?.type === 'title' ? 'bg-[#6C757D]' : 'bg-[#DC3545]'}`}> {index === 0 ? `ID: ${message.id} |` : ''}  {label?.text}</h6>
                                                         </div>
                                                         {/* <div>
                                                             <h6 className='text-xs font-bold bg-[#DC3545] text-white w-fit  px-2 py-1 rounded'>Excess Charges, Bank Statement</h6>

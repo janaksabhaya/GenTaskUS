@@ -266,7 +266,7 @@ const Home = () => {
         />
       </div> */}
 
-      <div className="relative overflow-x-auto mt-1 custom-table-height">
+      <div className="relative overflow-x-auto custom-table-height bg-white">
         <table className="w-full text-sm text-left text-gray-500 h-fit">
           <thead className="text-xs text-[#212529] capitalize font-bold text-[16px] bg-gray-50 dark:bg-gray-700">
             <tr className='text-base font-bold bg-[#E3EAF1] leading-6'>
@@ -301,23 +301,23 @@ const Home = () => {
                     className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
                   />
                 </td>
-                <td className="px-4 py-2">{record.recordingRef}</td>
-                <td className="px-4 py-2">{record.date}</td>
-                <td className="px-4 py-2">{record.startTime}</td>
-                <td className="px-4 py-2">{record.duration}</td>
-                <td className="px-4 py-2">{record.agentId}</td>
-                <td className="px-4 py-2">{record.agentName}</td>
-                <td className="px-4 py-2">{record.client}</td>
-                <td className="px-4 py-2">{record.location}</td>
-                <td className="px-4 py-2">{record.score}</td>
-                <td className="px-4 py-2"><img src={record?.sentiment} /></td>
-                <td className="px-4 py-2">
-                  <span className={`px-2 py-1 rounded text-white ${record.confidence === "HIGH" ? "bg-[#198754]" : "bg-[#DC3545]"}`}>
+                <td className="px-4">{record.recordingRef}</td>
+                <td className="px-4">{record.date}</td>
+                <td className="px-4">{record.startTime}</td>
+                <td className="px-4">{record.duration}</td>
+                <td className="px-4">{record.agentId}</td>
+                <td className="px-4">{record.agentName}</td>
+                <td className="px-4">{record.client}</td>
+                <td className="px-4">{record.location}</td>
+                <td className="px-4">{record.score}</td>
+                <td className="px-4 w-[34px] h-[34px]"><img src={record?.sentiment} className='w-[34px] h-[34px]' /></td>
+                <td className="px-4">
+                  <span className={`px-2 py-1 rounded text-xs text-white ${record.confidence === "HIGH" ? "bg-[#198754]" : "bg-[#DC3545]"}`}>
                     {record.confidence}
                   </span>
                 </td>
-                <td className="px-4 py-2">{record.method}</td>
-                <td className="px-4 py-2">{record.status}</td>
+                <td className="px-4 ">{record.method}</td>
+                <td className="px-4">{record.status}</td>
               </tr>
             ))}
           </tbody>

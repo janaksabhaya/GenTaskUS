@@ -24,7 +24,7 @@ const Header = () => {
         };
     }, []);
     return (
-        <header className="header sticky top-0 z-[99999] ">
+        <header className="header sticky top-0 z-[999]">
             <nav className="bg-white border-gray-200 z-50 " >
                 <div className=" flex flex-wrap items-center p-5 gap-[40px] w-full">
 

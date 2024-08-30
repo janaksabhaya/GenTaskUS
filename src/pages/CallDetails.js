@@ -89,15 +89,15 @@ const CallDetails = () => {
             <CallDetailsModel isOpen={isDrawerOpen} onClose={closeDrawer} />
             <div className='mb-5'>
                 <hr />
-                <div className='relative shadow-lg py-4 px-2 flex gap-4 items-center'>
+                <div className='relative shadow-lg py-4 px-2 flex gap-4 items-center bg-white'>
                     <span className='flex items-center'><i className="bi bi-chevron-left cursor-pointer" onClick={handleBackClick}></i></span>
                     <h6 className='text-xl font-medium'>Recording 94838387483</h6>
                 </div>
 
-                <div className='container mx-auto mt-6'>
+                <div className='mx-[60px] mt-6 '>
                     <div className='flex gap-6'>
-                        <div className='border border-solid border-[#21252940] rounded w-full'>
-                            <div className='flex justify-between items-center bg-[#e3eaf1] px-4 py-3'>
+                        <div className='border border-solid rounded-lg w-full bg-white'>
+                            <div className='flex justify-between items-center bg-[#ECF1F6] rounded-t-lg px-4 py-3'>
                                 <div className=''>
                                     <span className='font-semibold'>Call Details</span>
                                 </div>
@@ -158,11 +158,14 @@ const CallDetails = () => {
                         </div>
 
                         {/* QUALITY SCORE */}
-                        <div className='border border-solid border-[#21252940] rounded min-w-[428px]'>
-                            <div className='p-5 bg-[#e3eaf1]'>
+                        <div className='border border-solid rounded-lg min-w-[428px] bg-white'>
+                            <div className='p-5 bg-[#ECF1F6] rounded-t-lg'>
                                 <div className='flex justify-between items-center'>
                                     <h6 className='font-bold text-xl'>QUALITY SCORE</h6>
-                                    <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={hundleQulityScrore}> {qualityScore ? 'SUBMIT' : 'CHANGE'}</button>
+                                    <div className='flex items-center font-normal gap-3'>
+                                        {qualityScore ? <h6 className='text-[#0D6EFD] text-sm' onClick={() => { }}>DISCARD</h6> : ""}
+                                        <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={hundleQulityScrore}> {qualityScore ? 'SAVE' : 'CHANGE'}</button>
+                                    </div>
                                 </div>
                                 <div className='mt-5'>
                                     <h6 className='text-sm font-normal'>Select Quality Form</h6>
