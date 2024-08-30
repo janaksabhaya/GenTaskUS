@@ -45,12 +45,12 @@ const CallEvaluation = () => {
     ];
 
     return (
-        <>
+        <div className='mb-5'>
             <div className='container mx-auto'>
                 <div className='my-8'>
                     <div className='flex justify-center w-full gap-6'>
-                        <div className='border border-solid border-[rgba(33, 37, 41, 0.25)] rounded w-full'>
-                            <div className='flex justify-between items-center bg-[#E9ECEF] px-4 py-3'>
+                        <div className='border border-solid border-[#21252940] rounded w-full' style={{boxShadow:'0px 2px 4px 0px rgba(0, 0, 0, 0.08)'}}>
+                            <div className='flex justify-between items-center bg-[#e3eaf1] px-4 py-3'>
                                 <div className='gap-3 flex'>
                                     <i className="bi bi-calendar"></i>
                                     <span className='font-semibold'>As on 01-08-2024</span>
@@ -81,7 +81,7 @@ const CallEvaluation = () => {
                             </div>
                         </div>
 
-                        <div className='border rounded w-full'>
+                        <div className='border border-[#21252940] rounded w-full' style={{boxShadow:'0px 2px 4px 0px rgba(0, 0, 0, 0.08)'}}>
                             <div className='flex'>
                                 <div className='flex flex-col items-center py-[56px] border-r w-full'>
                                     <i className="bi bi-headset  text-[#FF0074] text-[48px]"></i>
@@ -122,11 +122,10 @@ const CallEvaluation = () => {
 
                     <div className='flex justify-center w-full mt-6 gap-6'>
 
-
                         {data?.map((item) => (
                             <div
                                 key={item.id}
-                                className='w-full border rounded'
+                                className='w-full border rounded border-[#21252940]'
                                 style={{ boxShadow: '0px 2px 4px 0px rgba(0, 0, 0, 0.08)' }}
                             >
                                 <div className='p-5 flex items-center gap-4'>
@@ -180,16 +179,16 @@ const CallEvaluation = () => {
                 </div>
 
                 {/* score table */}
-                {/* <div>
+                <div>
                     <ScoreTables />
 
                 </div>
                 <div>
-                    <WordCloudPhases />
-                </div> */}
+                    {/* <WordCloudPhases /> */}
+                </div>
 
             </div>
-        </>
+        </div>
     )
 }
 

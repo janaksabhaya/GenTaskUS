@@ -63,10 +63,10 @@ const Tabs = () => {
     return (
         <div>
             <div className='relative'>
-                <ul className="flex flex-wrap text-sm font-medium text-center h-[48px] text-gray-500 border-b px-5 pt-3 border-gray-200  bg-[#E9ECEF] dark:border-gray-700 dark:text-gray-400">
+                <ul className="flex flex-wrap text-sm font-medium text-center h-[48px] text-gray-500 border-b px-5 pt-3 border-gray-200  bg-[#e3eaf1] ">
                     <li className="me-2">
                         <button
-                            className={`inline-block px-4 py-2 rounded-t-lg border-[#DEE2E6] ${activeTab === 'transcription' ? 'text-blue-600 bg-gray-100 dark:bg-gray-800 dark:text-blue-500' : 'hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300'}`}
+                            className={`inline-block px-4 py-2 rounded-t-lg border-[#DEE2E6] ${activeTab === 'transcription' ? 'text-[#495057] bg-white ' : 'hover:text-gray-600 hover:bg-gray-50 text-[#0D6EFD]'}`}
                             onClick={() => handleTabChange('transcription')}
                         >
                             Transcription
@@ -74,14 +74,14 @@ const Tabs = () => {
                     </li>
                     <li className="me-2">
                         <button
-                            className={`inline-block px-4 py-2 rounded-t-lg ${activeTab === 'sentiment' ? 'text-blue-600 bg-gray-100 dark:bg-gray-800 dark:text-blue-500' : 'hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300'}`}
+                            className={`inline-block px-4 py-2 rounded-t-lg ${activeTab === 'sentiment' ? 'text-[#495057] bg-white ' : 'hover:text-gray-600 hover:bg-gray-50 text-[#0D6EFD]'}`}
                             onClick={() => handleTabChange('sentiment')}
                         >
                             Sentiment
                         </button>
                     </li>
                 </ul>
-                <div className='absolute top-[6px] right-5 flex gap-2 bg-white border rounded'>
+                <div className='absolute top-[7.49px] right-5 flex gap-2 bg-white border rounded'>
                     <h6 className='text-sm text-[#6C757D] px-2 py-[6px]'>CONFIDENCE</h6>
                     <div className='bg-[#198754] flex items-center rounded-r'>
                         <h6 className='  text-sm text-white text-center px-[6px] py-[2px]'>HIGH</h6>

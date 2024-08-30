@@ -33,7 +33,7 @@ const CallRecordingPlayer = ({audioUrl, onPlayPause}) => {
 
     return (
         <div className="flex items-center w-full gap-3">
-            <button onClick={togglePlayPause} className='cursor-pointer'>{!isPlaying ? <i className="bi bi-play-circle text-[20px] text-[#0D6EFD]"></i> : <i className="bi bi-pause-circle text-[20px] text-[#0D6EFD]"></i>}</button>
+            <button onClick={togglePlayPause} className='cursor-pointer flex items-center'>{!isPlaying ? <i className="bi bi-play-circle text-[20px] text-[#0D6EFD]"></i> : <i className="bi bi-pause-circle text-[20px] text-[#0D6EFD]"></i>} <span className='font-bold ms-3 mr-2'>Call Recording</span></button>
             <div className="relative h-5 bg-[#DCE8FF] rounded-full flex-grow">
                 <div className="bg-[#0D6EFD] h-full rounded-full" style={{ width: `${progress}%` }}></div>
             </div>

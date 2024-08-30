@@ -18,11 +18,11 @@ const AppRoutes = () => {
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
-        
+
         {/* Protecting routes with PrivateRoute */}
         <Route path="/" element={<PrivateRoute><MainLayout /></PrivateRoute>}>
-          <Route index element={<Home />} />
-          <Route path="/call-evaluation" element={<CallEvaluation />} />
+          <Route index element={<CallEvaluation />} />
+          <Route path="/call-evaluation" element={<Home />} />    {/* change route name */}
           <Route path="/call-details" element={<CallDetails />} />
         </Route>
 

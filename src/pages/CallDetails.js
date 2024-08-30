@@ -87,7 +87,7 @@ const CallDetails = () => {
         <>
             <CallSummaryModel isOpen={isModalOpen} onClose={closeModal} />
             <CallDetailsModel isOpen={isDrawerOpen} onClose={closeDrawer} />
-            <div>
+            <div className='mb-5'>
                 <hr />
                 <div className='relative shadow-lg py-4 px-2 flex gap-4 items-center'>
                     <span className='flex items-center'><i className="bi bi-chevron-left cursor-pointer" onClick={handleBackClick}></i></span>
@@ -96,8 +96,8 @@ const CallDetails = () => {
 
                 <div className='container mx-auto mt-6'>
                     <div className='flex gap-6'>
-                        <div className='border border-solid border-[rgba(33, 37, 41, 0.25)] rounded w-full'>
-                            <div className='flex justify-between items-center bg-[#E9ECEF] px-4 py-3'>
+                        <div className='border border-solid border-[#21252940] rounded w-full'>
+                            <div className='flex justify-between items-center bg-[#e3eaf1] px-4 py-3'>
                                 <div className=''>
                                     <span className='font-semibold'>Call Details</span>
                                 </div>
@@ -117,7 +117,7 @@ const CallDetails = () => {
                                     <i className="bi bi-clock-fill text-[#FF0074]"></i>
                                     <h6 className='text-sm font-normal'>03m 43s</h6>
                                 </div>
-                                <div className='font-medium text-[#0D6EFD] cursor-pointer' onClick={openDrawer}>
+                                <div className='font-medium text-xs text-[#0D6EFD] cursor-pointer' onClick={openDrawer}>
                                     View details
                                 </div>
                             </div>
@@ -158,8 +158,8 @@ const CallDetails = () => {
                         </div>
 
                         {/* QUALITY SCORE */}
-                        <div className='border border-solid border-[rgba(33, 37, 41, 0.25)] rounded min-w-[428px]'>
-                            <div className='p-5 bg-[#E9ECEF]'>
+                        <div className='border border-solid border-[#21252940] rounded min-w-[428px]'>
+                            <div className='p-5 bg-[#e3eaf1]'>
                                 <div className='flex justify-between items-center'>
                                     <h6 className='font-bold text-xl'>QUALITY SCORE</h6>
                                     <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={hundleQulityScrore}> {qualityScore ? 'SUBMIT' : 'CHANGE'}</button>
@@ -215,7 +215,7 @@ const CallDetails = () => {
                                             </div>
                                             <div className='relative '>
                                                 <input type='text'
-                                                    className={`border border-[#CED4DA]  w-[88px] px-3 py-[6px] rounded ${qualityScore ? '' : 'bg-[#E9ECEF]'}`}
+                                                    className={`border border-[#CED4DA] w-[88px] px-3 py-[6px] rounded ${qualityScore ? '' : 'bg-[#E9ECEF]'}`}
                                                     value={question.score}
                                                     placeholder='100'
                                                     disabled={!qualityScore}

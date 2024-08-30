@@ -3,7 +3,7 @@ import React from 'react';
 const Conversation = ({messages, currentTime = 30 }) => {
     
     return (
-        <div className="bg-gray-50 p-4 min-h-96 overflow-y-auto">
+        <div className=" p-4 min-h-96 overflow-y-auto ">
             {messages?.map((message, index) => (
                 <div
                     key={index}

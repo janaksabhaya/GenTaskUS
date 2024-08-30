@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Dropdown from '../common/Menu';
 import Pagination from '../common/Pagination';
 import SmileIcon from '../assets/images/face-smile.svg'
@@ -191,31 +191,85 @@ const Home = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
 
+
   const totalPages = Math.ceil(50 / itemsPerPage);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
+  // const [openDropdown, setOpenDropdown] = useState(null);
+  // const containerRef = useRef(null);
+  // const handleDropdownClick = (label) => {
+  //   setOpenDropdown(openDropdown === label ? null : label);
+  // };
+  // useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     if (containerRef.current && !containerRef.current.contains(event.target)) {
+  //       setOpenDropdown(null);  // Close all dropdowns
+  //     }
+  //   };
+
+  //   document.addEventListener('mousedown', handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener('mousedown', handleClickOutside);
+  //   };
+  // }, []);
+
 
   const paginatedItems = records.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   return (
     <>
       <hr />
-      <div className='shadow-lg my-2'>
-        <Dropdown label='Location' icon={<i className="bi bi-geo-alt-fill"></i>} />
-        <Dropdown label='Clients' icon={<i className="bi bi-suitcase-lg-fill"></i>} />
-        <Dropdown label='Teams' icon={<i className="bi bi-people-fill"></i>} />
-        <Dropdown label='Calls' icon={<i className="bi bi-headset"></i>} />
-        <Dropdown label='Method' icon={<i className="bi bi-gear"></i>} />
-        <Dropdown label='Sentiments' icon={<i className="bi bi-gear"></i>} />
-        <Dropdown label='Status' icon={<i className="bi bi-gear"></i>} />
-      </div>
+      {/* <div ref={containerRef} className='shadow-lg py-2'>
+        <Dropdown
+          label='Location'
+          icon={<i className="bi bi-geo-alt-fill"></i>}
+          isOpen={openDropdown === 'Location'}
+          onClick={() => handleDropdownClick('Location')}
+        />
+        <Dropdown
+          label='Clients'
+          icon={<i className="bi bi-suitcase-lg-fill"></i>}
+          isOpen={openDropdown === 'Clients'}
+          onClick={() => handleDropdownClick('Clients')}
+        />
+        <Dropdown
+          label='Teams'
+          icon={<i className="bi bi-people-fill"></i>}
+          isOpen={openDropdown === 'Teams'}
+          onClick={() => handleDropdownClick('Teams')}
+        />
+        <Dropdown
+          label='Calls'
+          icon={<i className="bi bi-headset"></i>}
+          isOpen={openDropdown === 'Calls'}
+          onClick={() => handleDropdownClick('Calls')}
+        />
+        <Dropdown
+          label='Method'
+          icon={<i className="bi bi-gear"></i>}
+          isOpen={openDropdown === 'Method'}
+          onClick={() => handleDropdownClick('Method')}
+        />
+        <Dropdown
+          label='Sentiments'
+          icon={<i className="bi bi-gear"></i>}
+          isOpen={openDropdown === 'Sentiments'}
+          onClick={() => handleDropdownClick('Sentiments')}
+        />
+        <Dropdown
+          label='Status'
+          icon={<i className="bi bi-gear"></i>}
+          isOpen={openDropdown === 'Status'}
+          onClick={() => handleDropdownClick('Status')}
+        />
+      </div> */}
 
-      <div className="relative overflow-x-auto  sm:rounded-lg mt-1 custom-table-height">
-        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 h-fit">
-          <thead className="text-xs text-[#212529] capitalize font-bold text-[16px] bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
+      <div className="relative overflow-x-auto mt-1 custom-table-height">
+        <table className="w-full text-sm text-left text-gray-500 h-fit">
+          <thead className="text-xs text-[#212529] capitalize font-bold text-[16px] bg-gray-50 dark:bg-gray-700">
+            <tr className='text-base font-bold bg-[#E3EAF1] leading-6'>
               <th className="p-4">
                 <input
                   type="checkbox"
@@ -239,12 +293,12 @@ const Home = () => {
           </thead>
           <tbody>
             {records.map(record => (
-              <tr key={record.id} className="bg-white border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer" onClick={() => navigate('/call-details')}>
+              <tr key={record.id} className="bg-[#ffffff] text-[#212529] border-b hover:bg-gray-50  cursor-pointer" onClick={() => navigate('/call-details')}>
                 <td className="p-4">
                   <input
                     type="checkbox"
                     onClick={(e) => e.stopPropagation()}
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
                   />
                 </td>
                 <td className="px-4 py-2">{record.recordingRef}</td>
@@ -258,7 +312,7 @@ const Home = () => {
                 <td className="px-4 py-2">{record.score}</td>
                 <td className="px-4 py-2"><img src={record?.sentiment} /></td>
                 <td className="px-4 py-2">
-                  <span className={`px-2 py-1 rounded-full text-white ${record.confidence === "HIGH" ? "bg-green-500" : "bg-red-500"}`}>
+                  <span className={`px-2 py-1 rounded text-white ${record.confidence === "HIGH" ? "bg-[#198754]" : "bg-[#DC3545]"}`}>
                     {record.confidence}
                   </span>
                 </td>
@@ -270,11 +324,13 @@ const Home = () => {
         </table>
       </div>
 
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
+      <footer className='sticky bottom-0 z-50'>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      </footer>
     </>
   )
 }
