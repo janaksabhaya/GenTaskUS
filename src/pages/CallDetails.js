@@ -110,7 +110,7 @@ const CallDetails = () => {
                     <h6 className='text-xl font-medium'>Recording 94838387483</h6>
                 </div>
 
-                <div className='mx-[60px] mt-6 '>
+                <div className='mx-[12px] mt-3 '>
                     <div className='flex gap-6'>
                         <div className='border border-solid rounded-lg w-full bg-white'>
                             <div className='flex justify-between items-center bg-[#ECF1F6] rounded-t-lg px-4 py-3'>

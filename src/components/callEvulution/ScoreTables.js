@@ -48,7 +48,7 @@ const ScoreTable = ({ title, scores }) => (
 );
 
 const ScoreTables = () => (
-  <div className="flex flex-col md:flex-row gap-6">
+  <div className="flex flex-col md:flex-row gap-3">
     <ScoreTable title="Alpha's Top 5 Scores" scores={data.topScores} />
     <ScoreTable title="Alpha's Lowest 5 Scores" scores={data.lowestScores} />
   </div>

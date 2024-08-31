@@ -48,7 +48,7 @@ const size = [648, 338];
 // Word cloud component
 const WordCloudPhases = ({words, title}) => {
   return (
-    <div className="flex gap-4 mt-6 w-full">
+    <div className="flex gap-4 mt-3 w-full">
       <div className="w-full p-4 bg-white rounded-lg shadow-md">
         <h2 className="text-lg font-semibold mb-4">{title}</h2>
         <div className='flex justify-center'>

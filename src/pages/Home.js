@@ -197,75 +197,12 @@ const Home = () => {
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
-  // const [openDropdown, setOpenDropdown] = useState(null);
-  // const containerRef = useRef(null);
-  // const handleDropdownClick = (label) => {
-  //   setOpenDropdown(openDropdown === label ? null : label);
-  // };
-  // useEffect(() => {
-  //   const handleClickOutside = (event) => {
-  //     if (containerRef.current && !containerRef.current.contains(event.target)) {
-  //       setOpenDropdown(null);  // Close all dropdowns
-  //     }
-  //   };
-
-  //   document.addEventListener('mousedown', handleClickOutside);
-  //   return () => {
-  //     document.removeEventListener('mousedown', handleClickOutside);
-  //   };
-  // }, []);
-
 
   const paginatedItems = records.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
   return (
     <>
       <hr />
-      {/* <div ref={containerRef} className='shadow-lg py-2'>
-        <Dropdown
-          label='Location'
-          icon={<i className="bi bi-geo-alt-fill"></i>}
-          isOpen={openDropdown === 'Location'}
-          onClick={() => handleDropdownClick('Location')}
-        />
-        <Dropdown
-          label='Clients'
-          icon={<i className="bi bi-suitcase-lg-fill"></i>}
-          isOpen={openDropdown === 'Clients'}
-          onClick={() => handleDropdownClick('Clients')}
-        />
-        <Dropdown
-          label='Teams'
-          icon={<i className="bi bi-people-fill"></i>}
-          isOpen={openDropdown === 'Teams'}
-          onClick={() => handleDropdownClick('Teams')}
-        />
-        <Dropdown
-          label='Calls'
-          icon={<i className="bi bi-headset"></i>}
-          isOpen={openDropdown === 'Calls'}
-          onClick={() => handleDropdownClick('Calls')}
-        />
-        <Dropdown
-          label='Method'
-          icon={<i className="bi bi-gear"></i>}
-          isOpen={openDropdown === 'Method'}
-          onClick={() => handleDropdownClick('Method')}
-        />
-        <Dropdown
-          label='Sentiments'
-          icon={<i className="bi bi-gear"></i>}
-          isOpen={openDropdown === 'Sentiments'}
-          onClick={() => handleDropdownClick('Sentiments')}
-        />
-        <Dropdown
-          label='Status'
-          icon={<i className="bi bi-gear"></i>}
-          isOpen={openDropdown === 'Status'}
-          onClick={() => handleDropdownClick('Status')}
-        />
-      </div> */}
-
       <div className="relative overflow-x-auto custom-table-height bg-white">
         <table className="w-full text-sm text-left text-gray-500 h-fit">
           <thead className="text-xs text-[#212529] capitalize font-bold text-[16px] bg-gray-50 dark:bg-gray-700">

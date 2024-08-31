@@ -2,15 +2,26 @@ import React, { useEffect, useRef, useState } from 'react';
 import Logo from '../logo.svg'
 import { useLocation } from 'react-router-dom';
 import Dropdown from '../common/Menu';
+import CalendarIcon from '../assets/images/calendar.svg'
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
 const Header = () => {
     const location = useLocation();
     const currentPath = location.pathname;
     const [openDropdown, setOpenDropdown] = useState(null);
     const containerRef = useRef(null);
+    const [startDate, setStartDate] = useState(new Date());
+    const [isOpenDate, setIsOpenDate] = useState(false)
+
     const handleDropdownClick = (label) => {
         setOpenDropdown(openDropdown === label ? null : label);
     };
+
+    const handleCalendarClick = () => {
+        setIsOpenDate(!isOpenDate)
+    };
+
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (containerRef.current && !containerRef.current.contains(event.target)) {
@@ -59,49 +70,70 @@ const Header = () => {
                 </div>
             </nav>
             {currentPath !== '/call-details' && (<>
-                <div ref={containerRef} className='shadow-lg py-2 relative z-50 border-t bg-white'>
-                    <Dropdown
-                        label='Location'
-                        icon={<i className="bi bi-geo-alt-fill"></i>}
-                        isOpen={openDropdown === 'Location'}
-                        onClick={() => handleDropdownClick('Location')}
-                    />
-                    <Dropdown
-                        label='Clients'
-                        icon={<i className="bi bi-suitcase-lg-fill"></i>}
-                        isOpen={openDropdown === 'Clients'}
-                        onClick={() => handleDropdownClick('Clients')}
-                    />
-                    <Dropdown
-                        label='Teams'
-                        icon={<i className="bi bi-people-fill"></i>}
-                        isOpen={openDropdown === 'Teams'}
-                        onClick={() => handleDropdownClick('Teams')}
-                    />
-                    <Dropdown
-                        label='Calls'
-                        icon={<i className="bi bi-headset"></i>}
-                        isOpen={openDropdown === 'Calls'}
-                        onClick={() => handleDropdownClick('Calls')}
-                    />
-                    <Dropdown
-                        label='Method'
-                        icon={<i className="bi bi-gear"></i>}
-                        isOpen={openDropdown === 'Method'}
-                        onClick={() => handleDropdownClick('Method')}
-                    />
-                    <Dropdown
-                        label='Sentiments'
-                        icon={<i className="bi bi-gear"></i>}
-                        isOpen={openDropdown === 'Sentiments'}
-                        onClick={() => handleDropdownClick('Sentiments')}
-                    />
-                    <Dropdown
-                        label='Status'
-                        icon={<i className="bi bi-gear"></i>}
-                        isOpen={openDropdown === 'Status'}
-                        onClick={() => handleDropdownClick('Status')}
-                    />
+
+                <div className='flex border-t bg-white shadow-lg py-2 items-center justify-between'>
+                    <div ref={containerRef} className=' relative z-50 '>
+                        <Dropdown
+                            label='Location'
+                            icon={<i className="bi bi-geo-alt-fill"></i>}
+                            isOpen={openDropdown === 'Location'}
+                            onClick={() => handleDropdownClick('Location')}
+                        />
+                        <Dropdown
+                            label='Clients'
+                            icon={<i className="bi bi-suitcase-lg-fill"></i>}
+                            isOpen={openDropdown === 'Clients'}
+                            onClick={() => handleDropdownClick('Clients')}
+                        />
+                        <Dropdown
+                            label='Teams'
+                            icon={<i className="bi bi-people-fill"></i>}
+                            isOpen={openDropdown === 'Teams'}
+                            onClick={() => handleDropdownClick('Teams')}
+                        />
+                        <Dropdown
+                            label='Calls'
+                            icon={<i className="bi bi-headset"></i>}
+                            isOpen={openDropdown === 'Calls'}
+                            onClick={() => handleDropdownClick('Calls')}
+                        />
+                        <Dropdown
+                            label='Method'
+                            icon={<i className="bi bi-gear"></i>}
+                            isOpen={openDropdown === 'Method'}
+                            onClick={() => handleDropdownClick('Method')}
+                        />
+                        <Dropdown
+                            label='Sentiments'
+                            icon={<i className="bi bi-gear"></i>}
+                            isOpen={openDropdown === 'Sentiments'}
+                            onClick={() => handleDropdownClick('Sentiments')}
+                        />
+                        <Dropdown
+                            label='Status'
+                            icon={<i className="bi bi-gear"></i>}
+                            isOpen={openDropdown === 'Status'}
+                            onClick={() => handleDropdownClick('Status')}
+                        />
+                    </div>
+                    <div className='relative gap-3 flex items-center mr-3 border border-[#DEE2E6] rounded py-[10px] px-3 bg-[#ECF1F6]'>
+                        <img
+                            src={CalendarIcon}
+                            alt='calendar'
+                            className='cursor-pointer'
+                            onClick={handleCalendarClick}
+                        />
+                        {isOpenDate && (
+                            <div className='absolute -left-[80px] top-[38px]'>
+                                <DatePicker
+                                    selected={startDate}
+                                    onChange={(date) => setStartDate(date)}
+                                    inline
+                                />
+                            </div>
+                        )}
+                        <span className='font-bold text-xs'>As on 01-08-2024</span>
+                    </div>
                 </div>
             </>)
 
