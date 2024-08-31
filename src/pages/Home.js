@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Dropdown from '../common/Menu';
 import Pagination from '../common/Pagination';
 import SmileIcon from '../assets/images/face-smile.svg'
@@ -191,6 +191,7 @@ const Home = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
 
+
   const totalPages = Math.ceil(50 / itemsPerPage);
 
   const handlePageChange = (page) => {
@@ -202,20 +203,10 @@ const Home = () => {
   return (
     <>
       <hr />
-      <div className='shadow-lg my-2'>
-        <Dropdown label='Location' icon={<i className="bi bi-geo-alt-fill"></i>} />
-        <Dropdown label='Clients' icon={<i className="bi bi-suitcase-lg-fill"></i>} />
-        <Dropdown label='Teams' icon={<i className="bi bi-people-fill"></i>} />
-        <Dropdown label='Calls' icon={<i className="bi bi-headset"></i>} />
-        <Dropdown label='Method' icon={<i className="bi bi-gear"></i>} />
-        <Dropdown label='Sentiments' icon={<i className="bi bi-gear"></i>} />
-        <Dropdown label='Status' icon={<i className="bi bi-gear"></i>} />
-      </div>
-
-      <div className="relative overflow-x-auto  sm:rounded-lg mt-1 custom-table-height">
-        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 h-fit">
-          <thead className="text-xs text-[#212529] capitalize font-bold text-[16px] bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
+      <div className="relative overflow-x-auto custom-table-height bg-white">
+        <table className="w-full text-sm text-left text-gray-500 h-fit">
+          <thead className="text-xs text-[#212529] capitalize font-bold text-[16px] bg-gray-50 dark:bg-gray-700">
+            <tr className='text-base font-bold bg-[#E3EAF1] leading-6'>
               <th className="p-4">
                 <input
                   type="checkbox"
@@ -239,42 +230,44 @@ const Home = () => {
           </thead>
           <tbody>
             {records.map(record => (
-              <tr key={record.id} className="bg-white border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer" onClick={() => navigate('/call-details')}>
+              <tr key={record.id} className="bg-[#ffffff] text-[#212529] border-b hover:bg-gray-50  cursor-pointer" onClick={() => navigate('/call-details')}>
                 <td className="p-4">
                   <input
                     type="checkbox"
                     onClick={(e) => e.stopPropagation()}
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
                   />
                 </td>
-                <td className="px-4 py-2">{record.recordingRef}</td>
-                <td className="px-4 py-2">{record.date}</td>
-                <td className="px-4 py-2">{record.startTime}</td>
-                <td className="px-4 py-2">{record.duration}</td>
-                <td className="px-4 py-2">{record.agentId}</td>
-                <td className="px-4 py-2">{record.agentName}</td>
-                <td className="px-4 py-2">{record.client}</td>
-                <td className="px-4 py-2">{record.location}</td>
-                <td className="px-4 py-2">{record.score}</td>
-                <td className="px-4 py-2"><img src={record?.sentiment} /></td>
-                <td className="px-4 py-2">
-                  <span className={`px-2 py-1 rounded-full text-white ${record.confidence === "HIGH" ? "bg-green-500" : "bg-red-500"}`}>
+                <td className="px-4">{record.recordingRef}</td>
+                <td className="px-4">{record.date}</td>
+                <td className="px-4">{record.startTime}</td>
+                <td className="px-4">{record.duration}</td>
+                <td className="px-4">{record.agentId}</td>
+                <td className="px-4">{record.agentName}</td>
+                <td className="px-4">{record.client}</td>
+                <td className="px-4">{record.location}</td>
+                <td className="px-4">{record.score}</td>
+                <td className="px-4 w-[34px] h-[34px]"><img src={record?.sentiment} className='w-[34px] h-[34px]' /></td>
+                <td className="px-4">
+                  <span className={`px-2 py-1 rounded text-xs text-white ${record.confidence === "HIGH" ? "bg-[#198754]" : "bg-[#DC3545]"}`}>
                     {record.confidence}
                   </span>
                 </td>
-                <td className="px-4 py-2">{record.method}</td>
-                <td className="px-4 py-2">{record.status}</td>
+                <td className="px-4 ">{record.method}</td>
+                <td className="px-4">{record.status}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
 
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
+      <footer className='sticky bottom-0 z-50'>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      </footer>
     </>
   )
 }

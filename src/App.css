@@ -1,4 +1,8 @@
-
+body {
+  background-color: #e3eaf1;
+  margin: 0;
+  padding: 0;
+}
 
   
   /* Ensure styles are applied globally if needed */

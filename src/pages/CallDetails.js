@@ -44,6 +44,7 @@ const CallDetails = () => {
         }
     ]);
 
+
     const [questionsResolution, setQuestionsResolution] = useState([
         {
             id: 1,
@@ -63,22 +64,37 @@ const CallDetails = () => {
         setQualityScore(!qualityScore)
     }
 
+
     const handleInputChange = (id, newScore) => {
-        setQuestions(questions.map(q =>
-            q.id === id ? { ...q, score: newScore } : q
-        ));
+        if (newScore.length <= 3 && newScore >= 0 && newScore <= 100 ) {
+            setQuestions(questions.map(q =>
+                q.id === id ? { ...q, score: newScore } : q
+            ));
+        }
     };
 
-    const handleInputChangeResolution = (id, newScore) => { // after change the state logic
-        setQuestions(questions.map(q =>
-            q.id === id ? { ...q, score: newScore } : q
-        ));
+    const handleInputChangeResolution = (id, newScore) => {
+        if (newScore.length <= 3 && newScore >= 0 && newScore <= 100) {
+            setQuestionsResolution(questionsResolution.map(q =>
+                q.id === id ? { ...q, score: newScore } : q
+            ));
+        }
     };
+
 
     const handleSubmit = () => {
         console.log('Submitted Scores:', questions);
         setQualityScore(false);
     };
+
+
+    const handleDiscard = () => {
+        setQuestions(questions);
+        setQuestionsResolution(questionsResolution);
+    };
+
+    console.log('questions', questions)
+    console.log('questionsResolution', questionsResolution)
 
     const handleBackClick = () => {
         navigate(-1);
@@ -87,17 +103,17 @@ const CallDetails = () => {
         <>
             <CallSummaryModel isOpen={isModalOpen} onClose={closeModal} />
             <CallDetailsModel isOpen={isDrawerOpen} onClose={closeDrawer} />
-            <div>
+            <div className='mb-5'>
                 <hr />
-                <div className='relative shadow-lg py-4 px-2 flex gap-4 items-center'>
+                <div className='relative shadow-lg py-4 px-2 flex gap-4 items-center bg-white'>
                     <span className='flex items-center'><i className="bi bi-chevron-left cursor-pointer" onClick={handleBackClick}></i></span>
                     <h6 className='text-xl font-medium'>Recording 94838387483</h6>
                 </div>
 
-                <div className='container mx-auto mt-6'>
+                <div className='mx-[12px] mt-3 '>
                     <div className='flex gap-6'>
-                        <div className='border border-solid border-[rgba(33, 37, 41, 0.25)] rounded w-full'>
-                            <div className='flex justify-between items-center bg-[#E9ECEF] px-4 py-3'>
+                        <div className='border border-solid rounded-lg w-full bg-white'>
+                            <div className='flex justify-between items-center bg-[#ECF1F6] rounded-t-lg px-4 py-3'>
                                 <div className=''>
                                     <span className='font-semibold'>Call Details</span>
                                 </div>
@@ -117,7 +133,7 @@ const CallDetails = () => {
                                     <i className="bi bi-clock-fill text-[#FF0074]"></i>
                                     <h6 className='text-sm font-normal'>03m 43s</h6>
                                 </div>
-                                <div className='font-medium text-[#0D6EFD] cursor-pointer' onClick={openDrawer}>
+                                <div className='font-medium text-xs text-[#0D6EFD] cursor-pointer' onClick={openDrawer}>
                                     View details
                                 </div>
                             </div>
@@ -158,11 +174,14 @@ const CallDetails = () => {
                         </div>
 
                         {/* QUALITY SCORE */}
-                        <div className='border border-solid border-[rgba(33, 37, 41, 0.25)] rounded min-w-[428px]'>
-                            <div className='p-5 bg-[#E9ECEF]'>
+                        <div className='border border-solid rounded-lg min-w-[428px] bg-white'>
+                            <div className='p-5 bg-[#ECF1F6] rounded-t-lg'>
                                 <div className='flex justify-between items-center'>
                                     <h6 className='font-bold text-xl'>QUALITY SCORE</h6>
-                                    <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={hundleQulityScrore}> {qualityScore ? 'SUBMIT' : 'CHANGE'}</button>
+                                    <div className='flex items-center font-normal gap-3'>
+                                        {qualityScore ? <h6 className='text-[#0D6EFD] text-sm cursor-pointer' onClick={handleDiscard}>DISCARD</h6> : ""}
+                                        <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={hundleQulityScrore}> {qualityScore ? 'SAVE' : 'CHANGE'}</button>
+                                    </div>
                                 </div>
                                 <div className='mt-5'>
                                     <h6 className='text-sm font-normal'>Select Quality Form</h6>
@@ -207,19 +226,19 @@ const CallDetails = () => {
                                     <h6 className='bg-[#212529] px-2 py-2 rounded text-white text-xs' >Weight: 60%</h6>
                                 </div>
                                 <div>
-                                    {questionsResolution?.map((question) => (
-                                        <div key={question.id} className='flex gap-5 mt-6 justify-between'>
+                                    {questionsResolution?.map((questionRes) => (
+                                        <div key={questionRes.id} className='flex gap-5 mt-6 justify-between'>
                                             <div>
-                                                <h6 className='text-base font-normal'>{question?.title}</h6>
-                                                <h6 className='bg-[#6C757D] px-2 py-2 rounded text-white text-xs w-fit mt-2' >Weight: {question.weight}%</h6>
+                                                <h6 className='text-base font-normal'>{questionRes?.title}</h6>
+                                                <h6 className='bg-[#6C757D] px-2 py-2 rounded text-white text-xs w-fit mt-2' >Weight: {questionRes.weight}%</h6>
                                             </div>
                                             <div className='relative '>
                                                 <input type='text'
-                                                    className={`border border-[#CED4DA]  w-[88px] px-3 py-[6px] rounded ${qualityScore ? '' : 'bg-[#E9ECEF]'}`}
-                                                    value={question.score}
+                                                    className={`border border-[#CED4DA] w-[88px] px-3 py-[6px] rounded ${qualityScore ? '' : 'bg-[#E9ECEF]'}`}
+                                                    value={questionRes?.score}
                                                     placeholder='100'
                                                     disabled={!qualityScore}
-                                                    onChange={(e) => handleInputChangeResolution(question.id, e.target.value)} />
+                                                    onChange={(e) => handleInputChangeResolution(questionRes.id, e.target.value)} />
                                                 {qualityScore && <span className='absolute top-[6px] left-[60px] '><i className="bi bi-pencil-fill text-[#6C757D]"></i></span>}
                                             </div>
                                         </div>

@@ -18,7 +18,7 @@ const data = {
 };
 
 const ScoreTable = ({ title, scores }) => (
-  <div className="w-full bg-blue-100 p-4 rounded-lg shadow-md">
+  <div className="w-full p-4 rounded-lg shadow-md bg-white">
     <h2 className="text-lg font-semibold mb-4">{title}</h2>
     <table className="min-w-full bg-white">
       <thead>
@@ -26,7 +26,7 @@ const ScoreTable = ({ title, scores }) => (
           <th className="py-2 px-4 border text-left border-gray-200">Agent Name</th>
           <th className="py-2 px-4 border text-left border-gray-200">Score</th>
           <th className="py-2 px-4 border text-left border-gray-200">Recording ID</th>
-          <th className="py-2 px-4 border text-left border-gray-200"></th>
+          {/* <th className="py-2 px-4 border text-left border-gray-200"></th> */}
         </tr>
       </thead>
       <tbody>
@@ -35,11 +35,11 @@ const ScoreTable = ({ title, scores }) => (
             <td className="py-2 px-4 border border-gray-200">{score.name}</td>
             <td className="py-2 px-4 border border-gray-200">{score.score}</td>
             <td className="py-2 px-4 border border-gray-200">{score.recordingId}</td>
-            <td className="py-2 px-4 border border-gray-200">
+            {/* <td className="py-2 px-4 border border-gray-200">
               <button className="text-blue-500 hover:text-blue-700">
                 ▶️
               </button>
-            </td>
+            </td> */}
           </tr>
         ))}
       </tbody>
@@ -48,7 +48,7 @@ const ScoreTable = ({ title, scores }) => (
 );
 
 const ScoreTables = () => (
-  <div className="flex flex-col md:flex-row gap-4">
+  <div className="flex flex-col md:flex-row gap-3">
     <ScoreTable title="Alpha's Top 5 Scores" scores={data.topScores} />
     <ScoreTable title="Alpha's Lowest 5 Scores" scores={data.lowestScores} />
   </div>

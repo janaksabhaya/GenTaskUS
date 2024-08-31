@@ -11,6 +11,7 @@ services:
       - 8.8.8.8
     restart: "unless-stopped"
     command: ["npm", "start"]
+    
 # services:
 #   web:
 #     build: .

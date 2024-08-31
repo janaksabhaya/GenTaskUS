@@ -2,30 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #E9ECEF;
+  border-radius: 4px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ababab;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 
 .waveform ::part(region-content) {
-    margin-top: 0px;
-    transform: rotate(-90deg);
-    background: #6C757D;
-    color: white;
-    font-weight: 700;
-    font-size: 12px;
-    border-radius: 2px;
-    display: flex !important;
-    justify-content: center;
-    padding: 1px 2px !important;
-    width: 20px;
-    height: fit-content;
+  margin-top: 0px;
+  transform: rotate(-90deg);
+  background: #6C757D;
+  color: white;
+  font-weight: 700;
+  font-size: 12px;
+  border-radius: 2px;
+  display: flex !important;
+  justify-content: center;
+  padding: 1px 2px !important;
+  width: 20px;
+  height: fit-content;
 }
 
 .waveform ::part(region-handle) {
-    border: none;
+  border: none;
 }
 
-.waveform ::part(f-content) ::part(region-content){
+.waveform ::part(f-content) ::part(region-content) {
   background: red !important;
   padding: 80px !important;
 }
+
 .custom-table-height {
-    height: calc(80vh + 7px);
-  }
+  height: calc(80vh - -30px);
+}
+

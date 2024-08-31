@@ -1,11 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 
-const Dropdown = ({ label = 'menu', icon = '', dropdownItems }) => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggleDropdown = () => setIsOpen(!isOpen);
-
-
+const Dropdown = ({ label = 'menu', icon = '', dropdownItems, isOpen, onClick }) => {
     const Items = [
         { label: `${label} 1`, href: '#' },
         { label: `${label} 2`, href: '#' },
@@ -15,7 +10,7 @@ const Dropdown = ({ label = 'menu', icon = '', dropdownItems }) => {
     return (
         <div className="relative inline-block text-left">
             <button
-                onClick={toggleDropdown}
+                onClick={onClick}
                 className="flex items-center px-3 py-2 text-blue-600 hover:text-blue-800 focus:outline-none"
                 type="button"
             >
